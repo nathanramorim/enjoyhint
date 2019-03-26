@@ -301,6 +301,9 @@ var EnjoyHint = function (_options) {
         var step_data = data[current_step];
         var $element = $(step_data.selector);
 
+        if(step_data.onSkip && typeof step_data.onSkip === 'function')
+            step_data.onSkip();
+
         off(step_data.event);
         $element.off(makeEventName(step_data.event));
 
